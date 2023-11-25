@@ -4,6 +4,7 @@
     {
         static void Main(string[] args)
         {
+            /*
             Worker prolet = new Worker();
             prolet.OutInfo();
 
@@ -19,6 +20,11 @@
             prolet.WorkExperience = 5;
             prolet.Age = 24;
             prolet.OutInfo();
+            */
+
+            Worker prolet = new Worker();
+            prolet.OutAge();
+            prolet.OutAge(28, 02, 2003);
         }
     }
 }

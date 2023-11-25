@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace Lab_2_indTask
 {
-    internal abstract class Person
+    internal abstract class Person : IDate
     {
         /// <summary>
         /// Поля + геттеры-сеттеры
@@ -80,6 +80,30 @@ namespace Lab_2_indTask
         {
             this.SetOrReplaceName(_surname, _name, _patronymic);
             this.Age = _age;
+        }
+
+        public void OutAge(int day, int month, int year)
+        {
+            CalculateAge(day, month, year);
+            OutAge();
+        }
+        public void CalculateAge(int day, int month, int year)
+        {
+            try
+            {
+                DateTime birthDate = new DateTime(year, month, day);
+                DateTime today = DateTime.Today;
+                int age = today.Year - birthDate.Year;
+                if (birthDate > today.AddYears(-age))
+                {
+                    --age;
+                }
+                Age = age;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
